@@ -1,8 +1,7 @@
 package hexlet.code.schemac;
 
-import hexlet.code.Validator;
 
-public final class StringSchema extends Validator<String> {
+public final class StringSchema extends BaseSchema<String> {
     public StringSchema required() {
         getPredicates().put("запрет на null", s -> s != null && !s.isEmpty());
         return this;
@@ -16,5 +15,9 @@ public final class StringSchema extends Validator<String> {
     public StringSchema contains(String data) {
         getPredicates().put("строка содержит", s -> s.contains(data));
         return this;
+    }
+
+    public boolean isValid(String value) {
+        return super.isValid(value);
     }
 }
