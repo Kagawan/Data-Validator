@@ -17,4 +17,9 @@ public final class MapSchema<T> extends BaseSchema<Map<String, T>> {
     public boolean isValid(Map<String, T> value) {
         return super.isValid(value);
     }
+
+    public MapSchema<T> shape(Map<String, BaseSchema<String>> sch) {
+        var schemas = sch;
+        return this;
+    }
 }
