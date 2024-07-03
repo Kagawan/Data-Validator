@@ -1,8 +1,8 @@
 plugins {
-
     java
     checkstyle
     jacoco
+    id("com.github.mrsarm.jshell.plugin") version "1.2.1"
 }
 
 group = "hexlet.code"

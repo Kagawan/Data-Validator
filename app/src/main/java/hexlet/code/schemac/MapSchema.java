@@ -18,8 +18,15 @@ public final class MapSchema<T> extends BaseSchema<Map<String, T>> {
         return super.isValid(value);
     }
 
-    public MapSchema<T> shape(Map<String, BaseSchema<String>> sch) {
-        var schemas = sch;
+    public MapSchema<T> shape(Map<String, BaseSchema<T>> sch) {
+        getPredicates().put("shape", map -> {
+            return sch.entrySet().stream().allMatch(entry -> {
+                String key = entry.getKey();
+                BaseSchema<T> schema = entry.getValue();
+                var s = map.get(key);
+                return s != null && schema.isValid(s);
+            });
+        });
         return this;
     }
 }
