@@ -23,7 +23,7 @@ public final class MapSchema<T> extends BaseSchema<Map<String, T>> {
             return sch.entrySet().stream().allMatch(entry -> {
                 String key = entry.getKey();
                 BaseSchema<T> schema = entry.getValue();
-                var s = map.get(key);
+                T s = map.get(key);
                 return s != null && schema.isValid(s);
             });
         });

@@ -1,6 +1,5 @@
 package hexlet.code.schemas;
 
-
 public final class StringSchema extends BaseSchema<String> {
     public StringSchema required() {
         getPredicates().put("запрет на null", s -> s != null && !s.isEmpty());
